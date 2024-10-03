@@ -40,11 +40,12 @@ export const Sidebar = () => {
                   onClick={() => setIsOpen(!isOpen)} // This should be inside onClick
                   className={({ isActive }) =>
                     `flex items-center px-4 py-2 text-sm font-medium rounded-md ${
-                      isActive ? "bg-orange-500 text-white" : "text-black "
+                      isActive ? "bg-orange-500 text-white" : "text-black"
                     }`
                   }
                 >
-                  {item.icon}
+                  {/* Add class to control the icon size */}
+                  <span className="text-xl text-gray-500">{item.icon}</span>
                   <span className="ml-3">{item.label}</span>
                 </NavLink>
               ))}

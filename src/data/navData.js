@@ -1,13 +1,14 @@
 // navData.js
-import { FaTachometerAlt, FaUsers, FaComments, FaShareAlt, FaGavel, FaQuestionCircle, FaCog } from "react-icons/fa";
-
+import { FaTachometerAlt, FaUsers, FaGavel, FaQuestionCircle, FaCog } from "react-icons/fa";
+import { MdChat } from "react-icons/md";
+import { IoShareSocialSharp } from "react-icons/io5";
 export const navItems = [
-  { path: "/", label: "Dashboard", icon: <FaTachometerAlt />, className: "bg-orange-500 text-white" },
-  { path: "/partnership", label: "Partnership", icon: <FaUsers />, className: "" },
-  { path: "/users", label: "Users", icon: <FaUsers />, className: "" },
-  { path: "/chat", label: "Chat", icon: <FaComments />, className: "" },
-  { path: "/social-media", label: "Social Media", icon: <FaShareAlt />, className: "" },
-  { path: "/terms-conditions", label: "Terms & Conditions", icon: <FaGavel />, className: "" },
-  { path: "/faq", label: "FAQs", icon: <FaQuestionCircle />, className: "" },
-  { path: "/admin-settings", label: "Admin Settings", icon: <FaCog />, className: "" },
+  { path: "/", label: "Dashboard", icon: <FaTachometerAlt />},
+  { path: "/partnership", label: "Partnership", icon: <FaUsers />},
+  { path: "/users", label: "Users", icon: <FaUsers />},
+  { path: "/chat", label: "Chat", icon: <MdChat />, className: "" },
+  { path: "/social-media", label: "Social Media", icon: <IoShareSocialSharp />},
+  { path: "/terms-conditions", label: "Terms & Conditions", icon: <FaGavel />},
+  { path: "/faq", label: "FAQs", icon: <FaQuestionCircle /> },
+  { path: "/admin-settings", label: "Admin Settings", icon: <FaCog /> },
 ];

@@ -58,7 +58,7 @@ export const Partnership = () => {
         <label className="block mb-2">Partnership Title</label>
         <input
           type="text"
-          name="title"
+          name="title" required
           value={newPartnership.title}
           onChange={handleInputChange}
           className="border w-full p-2 mb-4 rounded"
@@ -131,7 +131,7 @@ export const Partnership = () => {
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Partnerships
         </h2>
-        <div className="overflow-y-auto overflow-x-auto max-h-64">
+        <div className="overflow-y-auto overflow-x-auto w-full">
           <table className="min-w-full bg-white rounded-lg shadow-lg">
             <thead>
               <tr className="text-left text-[#828282] text-lg border-b  border-gray-200">
