@@ -135,7 +135,7 @@ export const Partnership = () => {
           <table className="min-w-full bg-white rounded-lg shadow-lg">
             <thead>
               <tr className="text-left text-[#828282] text-lg border-b  border-gray-200">
-                <th className="px-4 py-4 ">Company logo</th>
+                <th className="px-4 py-4 ">Company logof</th>
                 <th className="px-4 py- ">Title</th>
                 <th className="px-4 py-2 text-gray-600 whitespace-normal">
                   Partnership <br /> Company Name
