@@ -129,7 +129,7 @@ export const Partnership = () => {
 
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Partnerships
+          Partnership
         </h2>
         <div className="overflow-y-auto overflow-x-auto w-full">
           <table className="min-w-full bg-white rounded-lg shadow-lg">
