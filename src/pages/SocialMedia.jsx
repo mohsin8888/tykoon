@@ -136,7 +136,9 @@ export const SocialMedia = () => {
                   <p className="text-orange-500 font-medium">
                     Click to upload.
                   </p>
-                  <p className="text-gray-400 text-sm">Upload your logo here</p>
+                  <p className="text-gray-400 text-sm">Upload your logo mohsibn
+
+                  </p>
                 </div>
               </label>
               <input
