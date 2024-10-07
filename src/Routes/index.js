@@ -32,7 +32,7 @@ const Router = createBrowserRouter([
         element: <Partnership />, // Partnership page route
       },
       {
-        path: "/social-media",
+        path: "/social-mediaa",
         element: <SocialMedia />, // Social Media page route
       },
       {
@@ -40,7 +40,7 @@ const Router = createBrowserRouter([
         element: <Users />, // Users page route
       },
       {
-        path: "/terms-conditions",
+        path: "/terms-conditionsz",
         element: <TermConditions />, // Terms and Conditions page route
       },
       {

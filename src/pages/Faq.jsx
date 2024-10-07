@@ -1,80 +1,19 @@
-import React, { useState } from 'react';
-import { AiOutlinePlus, AiOutlineMinus, AiFillEdit } from 'react-icons/ai';
-
-const FAQItem = ({ question, answer, onEdit, isEditing, onSave }) => {
-  const [editQuestion, setEditQuestion] = useState(question);
-  const [editAnswer, setEditAnswer] = useState(answer);
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-b">
-      <div
-        className="flex justify-between items-center py-4 cursor-pointer"
-        onClick={() => !isEditing && setIsOpen(!isOpen)}
-      >
-        <div className="flex items-center w-full">
-          <div className="flex items-center justify-center mr-4">
-            {isOpen ? (
-              <AiOutlineMinus className="text-white bg-red-600 rounded-lg h-[1rem] w-[1rem]" />
-            ) : (
-              <AiOutlinePlus className="text-white bg-black rounded-lg h-[1rem] w-[1rem]" />
-            )}
-          </div>
-          {isEditing ? (
-            <input
-              className="border border-gray-300 rounded p-1 text-sm w-full mr-2"
-              value={editQuestion}
-              onChange={(e) => setEditQuestion(e.target.value)}
-              placeholder="Edit question"
-            />
-          ) : (
-            <p className="font-semibold w-full">{question}</p>
-          )}
-        </div>
-        {isEditing ? (
-          <button
-            className="bg-blue-500 text-white px-2 py-1 rounded text-sm ml-2"
-            onClick={() => onSave(editQuestion, editAnswer)}
-          >
-            Save
-          </button>
-        ) : (
-          <AiFillEdit
-            className="text-gray-500 hover:text-gray-700 cursor-pointer"
-            onClick={onEdit}
-          />
-        )}
-      </div>
-      {isOpen && (
-        <div className="pl-6 pb-4 text-gray-600">
-          {isEditing ? (
-            <textarea
-              className="border border-gray-300 rounded p-2 text-sm w-full"
-              value={editAnswer}
-              onChange={(e) => setEditAnswer(e.target.value)}
-              placeholder="Edit answer"
-            />
-          ) : (
-            <p>{answer}</p>
-          )}
-        </div>
-      )}
-    </div>
-  );
-};
-
+import React, { useState } from "react";
+import {FAQItem} from "../components/FAQItem"
 const FAQ = () => {
   const [faqData, setFaqData] = useState([
     {
-      question: 'If you could be any age for the rest of your life, which would you choose?',
-      answer: 'It is a long established fact that a reader will be distracted by the readable content of a page.',
+      question:
+        "If you could be any age for the rest of your life, which would you choose?",
+      answer:
+        "It is a long established fact that a reader will be distracted by the readable content of a page.",
     },
     // Add more questions here...
   ]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newQuestion, setNewQuestion] = useState('');
-  const [newAnswer, setNewAnswer] = useState('');
+  const [newQuestion, setNewQuestion] = useState("");
+  const [newAnswer, setNewAnswer] = useState("");
 
   const handleEdit = (index) => {
     setEditingIndex(index);
@@ -93,14 +32,14 @@ const FAQ = () => {
   const handleAddQuestion = () => {
     if (newQuestion && newAnswer) {
       setFaqData([...faqData, { question: newQuestion, answer: newAnswer }]);
-      setNewQuestion('');
-      setNewAnswer('');
+      setNewQuestion("");
+      setNewAnswer("");
       setIsModalOpen(false);
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="w-[100%]  p-8 bg-white h-full">
       <h1 className="text-[2rem] font-bold mb-4">FAQs</h1>
       <div className="flex justify-between items-center mb-6">
         <p className="text-[#828282] text-lg">Updated June 2024</p>
