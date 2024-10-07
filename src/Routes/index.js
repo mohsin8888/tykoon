@@ -8,7 +8,7 @@ import { SocialMedia } from "../pages/SocialMedia";
 import { Users } from "../pages/Users";
 import { TermConditions } from "../pages/TermConditions";
 import { AdminSetting } from "../pages/AdminSetting";
-import { Faq } from "../pages/Faq";
+import  Faq  from "../pages/Faq";
 
 
 // Using createBrowserRouter for path-based routing
