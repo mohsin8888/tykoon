@@ -50,7 +50,7 @@ export const Partnership = () => {
       {/* Modal for adding a partnership */}
       {showModal && (
   <div className="fixed inset-0 bg-gray-300 bg-opacity-50 flex justify-center mx-auto md:ml-40 items-center">
-    <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] sm:w-[70%] h-[90%] sm:h-[70%]  ">
+    <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] sm:w-[70%] h-[80%] sm:h-[70%]  ">
       <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
         Add Partnership
       </h2>
@@ -148,7 +148,10 @@ export const Partnership = () => {
             </thead>
             <tbody>
               {partnerships.map((partnership, index) => (
-                <tr key={index} className="border-b border-gray-200">
+                 <tr
+                 key={index}
+                 className={`px-4 py-2 ${index !== partnerships.length - 1 ? 'border-b border-gray-200' : ''}`}
+               >
                   <td className="px-4 py-2">
                     {typeof partnership.companyLogo === "string" ? (
                       // Display if it's a URL string or image path

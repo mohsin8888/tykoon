@@ -131,7 +131,7 @@ export const SocialMedia = () => {
 
       {showAddCard && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white w-[40%] p-6 rounded shadow-lg">
+          <div className="bg-white w-[90%] sm:w-[40%] p-6 rounded shadow-lg">
             <h2 className="text-xl font-bold mb-4">
               {isEdit ? "Edit Social Platform" : "Add Social Platform"}
             </h2>

@@ -11,13 +11,13 @@ export const Sidebar = () => {
   };
 
   return (
-    <div>
+    <div onClick={() => setIsOpen(!isOpen)}>
       {/* Sidebar Toggle Button for smaller screens */}
       <button
-        className="lg:hidden fixed top-6 left-4 z-50 text-orange-500"
+        className="lg:hidden fixed  top-9 sm:top-6 left-6 z-50 text-gray-500"
         onClick={handleToggle}
       >
-        {isOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
+        {isOpen ? <FaTimes size={30} /> : <FaBars size={22} />}
       </button>
 
       {/* Sidebar container */}
@@ -32,7 +32,7 @@ export const Sidebar = () => {
               <img src={logo} alt="Logo" className="h-10 w-10" />
               <span className="text-xl font-bold">Admin Panel</span>
             </div>
-            <nav className="mt-16 space-y-4">
+            <nav className=" mt-8 sm:mt-16 space-y-4">
               {navItems.map((item, index) => (
                 <NavLink
                   key={index}

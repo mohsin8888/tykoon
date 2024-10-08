@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 export const TermConditions = () => {
   // State to track edit mode and content
   const [isEditable, setIsEditable] = useState(false);
@@ -23,6 +24,7 @@ export const TermConditions = () => {
     // Handle the save logic here (e.g., API request to save the updated content)
     setIsEditable(false);
     // alert("Terms & Conditions saved successfully!"); // For demonstration
+    toast.success("Content updated successfully!");
   };
 
   // Handle content change when editing
@@ -70,6 +72,8 @@ export const TermConditions = () => {
           Save
         </button>
       </div>
+       {/* Toast Container for notifications */}
+       <ToastContainer />
     </div>
   );
 };

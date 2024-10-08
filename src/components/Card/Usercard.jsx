@@ -8,7 +8,7 @@ export const Usercard = ({
 }) => {
   return (
    <>
-    <div class={`relative bg-white shadow-md rounded-lg p-4 ${CustomClass}`}>
+    <div class={`relative bg-white  shadow-sm rounded-lg p-4 ${CustomClass}`}>
             <div class="text-[1rem] .poppins font-[600] text-black ">
               {Heading}
             </div>
@@ -17,7 +17,7 @@ export const Usercard = ({
               {Text}
             </div>
 
-            <div class="absolute top-0 right-0  p-2 rounded">
+            <div class="absolute top-0 right-0  p-2 ">
               <img src={Icon} alt="User Icon" class="w-12 h-12" />
             </div>
           </div>

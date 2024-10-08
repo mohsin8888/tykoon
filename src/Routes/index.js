@@ -28,7 +28,7 @@ const Router = createBrowserRouter([
         element: <Chat />, // Chat page route
       },
       {
-        path: "/partnershipz",
+        path: "/partnership",
         element: <Partnership />, // Partnership page route
       },
       {
@@ -36,7 +36,7 @@ const Router = createBrowserRouter([
         element: <SocialMedia />, // Social Media page route
       },
       {
-        path: "/usersz",
+        path: "/users",
         element: <Users />, // Users page route
       },
       {
