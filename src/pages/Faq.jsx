@@ -8,6 +8,12 @@ const FAQ = () => {
       answer:
         "It is a long established fact that a reader will be distracted by the readable content of a page.",
     },
+    {
+      question:
+        "If you could be any age for the rest of your life, which would you choose?",
+      answer:
+        "It is a long established fact that a reader will be distracted by the readable content of a page.",
+    },
     // Add more questions here...
   ]);
   const [editingIndex, setEditingIndex] = useState(null);
@@ -15,7 +21,7 @@ const FAQ = () => {
   const [newQuestion, setNewQuestion] = useState("");
   const [newAnswer, setNewAnswer] = useState("");
 
-  const handleEdit = (index) => {
+  const  handleEdit = (index) => {
     setEditingIndex(index);
   };
 
@@ -58,14 +64,15 @@ const FAQ = () => {
           isEditing={editingIndex === index}
           onEdit={() => handleEdit(index)}
           onSave={handleSave}
+          
         />
       ))}
-
+       
       {/* Modal for adding a new question */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-lg w-[400px]">
-            <h2 className="text-xl font-bold mb-4">Add Questions</h2>
+        <div className="  fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 lg:pl-44 px-2">
+          <div className="bg-white p-6 rounded shadow-lg lg:w-[40%]  ">
+            <h2 className="text-[1.3rem] font-bold mb-4">Add Questions</h2>
             <input
               type="text"
               className="border border-gray-300 rounded p-2 w-full mb-4"

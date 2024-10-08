@@ -22,7 +22,7 @@ export const TermConditions = () => {
   const handleSaveClick = () => {
     // Handle the save logic here (e.g., API request to save the updated content)
     setIsEditable(false);
-    alert("Terms & Conditions saved successfully!"); // For demonstration
+    // alert("Terms & Conditions saved successfully!"); // For demonstration
   };
 
   // Handle content change when editing
@@ -50,7 +50,7 @@ export const TermConditions = () => {
       </div>
 
       {/* Buttons Section */}
-      <div className="flex justify-center gap-2 mt-4">
+      <div className="flex justify-start gap-2 mt-4">
         {/* Edit Button */}
         <button
           className="bg-black text-white px-12 py-2 rounded-md"

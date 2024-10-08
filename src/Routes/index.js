@@ -28,19 +28,19 @@ const Router = createBrowserRouter([
         element: <Chat />, // Chat page route
       },
       {
-        path: "/partnership",
+        path: "/partnershipz",
         element: <Partnership />, // Partnership page route
       },
       {
-        path: "/social-mediaa",
+        path: "/social-mediaaz",
         element: <SocialMedia />, // Social Media page route
       },
       {
-        path: "/users",
+        path: "/usersz",
         element: <Users />, // Users page route
       },
       {
-        path: "/terms-conditionsz",
+        path: "/terms-conditions",
         element: <TermConditions />, // Terms and Conditions page route
       },
       {
