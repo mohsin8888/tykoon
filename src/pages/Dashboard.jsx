@@ -19,7 +19,7 @@ export const Dashboard = () => {
         <Usercard Heading="Accepted Partnerships" Text="30" Icon={Accepticon} />
       </div>
       <div className="bg-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Users Partnerships</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Users Partnerships this user</h2>
       <div className="overflow-y-auto overflow-x-auto max-h-64">
         <table className="min-w-full bg-white">
           <thead>
