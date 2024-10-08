@@ -95,7 +95,7 @@ const FAQ = () => {
                 Add
               </button>
               <button
-                className="bg-black text-white px-4 py-2 rounded"
+                className="bg-b text-white px-6 py-2 rounded"
                 onClick={() => setIsModalOpen(false)}
               >
                 Cancel
