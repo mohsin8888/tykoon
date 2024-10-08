@@ -82,7 +82,7 @@ const FAQ = () => {
             />
             <input
               type="text"
-              className="border border-gray-300 rounded p-2 w-full mb-4"
+              className="border border-gray-300 rounded p-2 w-full mb-5"
               placeholder="Answer"
               value={newAnswer}
               onChange={(e) => setNewAnswer(e.target.value)}
