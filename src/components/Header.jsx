@@ -4,9 +4,9 @@ export const Header = () => {
   return (
     <>
     <div className=''>
-     <div className="  flex justify-between items-center p-4 bg-white  border-b border-gray-200 ml-60">
+     <div className="  flex justify-between items-center  p-8 sm:p-4 bg-white  border-b border-gray-200 sm:ml-60">
       <div className="flex items-center ">
-        <p className="text-lg font-semibold">Hello, Abdullah</p>
+        <p className=" text-sm sm:text-lg font-semibold">Hello, Abdullah</p>
       </div>
       <div className="flex items-center">
         {/* Notification Icon */}

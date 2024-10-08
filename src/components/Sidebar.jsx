@@ -14,7 +14,7 @@ export const Sidebar = () => {
     <div>
       {/* Sidebar Toggle Button for smaller screens */}
       <button
-        className="lg:hidden fixed top-12 left-4 z-50 text-orange-500"
+        className="lg:hidden fixed top-6 left-4 z-50 text-orange-500"
         onClick={handleToggle}
       >
         {isOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
@@ -57,7 +57,7 @@ export const Sidebar = () => {
       {/* Overlay to close the sidebar when clicking outside */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 lg:hidden z-30"
+          className="fixed inset-0 flex bg-black opacity-50 lg:hidden z-30"
           onClick={handleToggle}
         ></div>
       )}

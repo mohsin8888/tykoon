@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import Facebookicon from "../assets/images/Facebookicon.svg";
 import Instagram from "../assets/images/Instagram.svg";
 import { MdUploadFile } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 export const SocialMedia = () => {
   const [showAddCard, setShowAddCard] = useState(false);
   const [isEdit, setIsEdit] = useState(false); // Track whether we are editing
   const [editIndex, setEditIndex] = useState(null); // Track index of the item being edited
   const [socialPlatforms, setSocialPlatforms] = useState([
-    { name: "Facebook", icon: Facebookicon },
-    { name: "Instagram", icon: Instagram },
+    { name: "Facebook", icon: Facebookicon, iconName: "Facebookicon.svg" },
+    { name: "Instagram", icon: Instagram, iconName: "Instagram.svg" },
   ]);
   const [newPlatform, setNewPlatform] = useState("");
   const [newIcon, setNewIcon] = useState(null);
+  const [uploadedFileName, setUploadedFileName] = useState(""); // New state to store file name
 
   // Handle the Add button click
   const handleAddClick = () => {
@@ -19,6 +23,7 @@ export const SocialMedia = () => {
     setIsEdit(false); // It's for adding, not editing
     setNewPlatform("");
     setNewIcon(null);
+    setUploadedFileName(""); // Reset file name on opening modal
   };
 
   // Handle saving new platform or editing existing one
@@ -27,18 +32,22 @@ export const SocialMedia = () => {
       if (isEdit) {
         // Update the existing platform
         const updatedPlatforms = [...socialPlatforms];
-        updatedPlatforms[editIndex] = { name: newPlatform, icon: newIcon };
+        updatedPlatforms[editIndex] = { name: newPlatform, icon: newIcon, iconName: uploadedFileName };
         setSocialPlatforms(updatedPlatforms);
         setIsEdit(false); // Reset edit mode
         setEditIndex(null); // Reset edit index
+        toast.success("Platform updated successfully!");
       } else {
         // Add new platform
         setSocialPlatforms([
           ...socialPlatforms,
-          { name: newPlatform, icon: newIcon },
+          { name: newPlatform, icon: newIcon, iconName: uploadedFileName },
         ]);
+        toast.success("Platform added successfully!"); // Show toast notification
       }
       setShowAddCard(false); // Close modal
+    } else {
+      toast.error("Please enter platform name and icon."); // Error toast if fields are empty
     }
   };
 
@@ -46,6 +55,7 @@ export const SocialMedia = () => {
   const handleRemove = (index) => {
     const updatedPlatforms = socialPlatforms.filter((_, i) => i !== index);
     setSocialPlatforms(updatedPlatforms);
+    toast.info("Platform removed successfully.");
   };
 
   // Handle Edit button click
@@ -55,12 +65,24 @@ export const SocialMedia = () => {
     setEditIndex(index); // Store the index of the platform being edited
     setNewPlatform(socialPlatforms[index].name); // Set current name in input field
     setNewIcon(socialPlatforms[index].icon); // Set current icon
+    setUploadedFileName(socialPlatforms[index].iconName); // Display previously uploaded file name
+  };
+
+  // Handle file upload and store the file name
+  const handleFileUpload = (e) => {
+   
+    const file = e.target.files[0];
+    // console.log(file);
+    if (file) {
+      setNewIcon(URL.createObjectURL(file)); // Set new icon
+      setUploadedFileName(file.name); // Store the file name
+    }
   };
 
   return (
     <>
       <div className="w-full h-full bg-white">
-        <div className="w-[40%] bg-white px-4 py-6">
+        <div className=" w-full sm:[70%] md:w-[60%] lg:w-[50%]  bg-white px-4 py-6">
           <h2 className="text-[2rem] font-bold mb-4">Social Media Details</h2>
 
           <div className="flex justify-between items-center mb-6">
@@ -134,18 +156,14 @@ export const SocialMedia = () => {
                 <MdUploadFile className="text-orange-500 w-10 h-10 mr-4" />
                 <div>
                   <p className="text-orange-500 font-medium">
-                    Click to upload.
+                    {uploadedFileName || "Click to upload."}
                   </p>
-                  <p className="text-gray-400 text-sm">Upload your logo mohsibn
-
-                  </p>
+                  <p className="text-gray-400 text-sm">Upload your logo</p>
                 </div>
               </label>
               <input
                 type="file"
-                onChange={(e) =>
-                  setNewIcon(URL.createObjectURL(e.target.files[0]))
-                }
+                onChange={handleFileUpload}
                 className="hidden"
                 id="upload"
               />
@@ -167,6 +185,9 @@ export const SocialMedia = () => {
           </div>
         </div>
       )}
+
+      {/* Toast Container for notifications */}
+      <ToastContainer />
     </>
   );
 };
