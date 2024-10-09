@@ -1,4 +1,4 @@
-import logo from "../assets/images/dpc.png";
+import logo from "../assets/images/userimage.png";
 export const Useritem = [
     {
         "name": "Abdullah",
@@ -17,12 +17,85 @@ export const Useritem = [
         "email": "john@example.com",
         "homeTown": "New York",
         "dob": "15/6/1998",
+        "schoolName": "Name here",
+        "graduationYear": "2021",
+        "sports": "Football",
+        "position": "Striker",
+        "interests": "Fitness, Sports",
+        "logo":logo
+      },
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "homeTown": "New York",
+        "dob": "15/6/1998",
+        "schoolName": "Name here",
+        "graduationYear": "2021",
+        "sports": "Football",
+        "position": "Striker",
+        "interests": "Fitness, Sports",
+        "logo":logo
+      },
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "homeTown": "New York",
+        "dob": "15/6/1998",
+        "schoolName": "Name here",
+        "graduationYear": "2021",
+        "sports": "Football",
+        "position": "Striker",
+        "interests": "Fitness, Sports",
+        "logo":logo
+      },
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "homeTown": "New York",
+        "dob": "15/6/1998",
+        "schoolName": "Name here",
+        "graduationYear": "2021",
+        "sports": "Football",
+        "position": "Striker",
+        "interests": "Fitness, Sports",
+        "logo":logo
+      },
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "homeTown": "New York",
+        "dob": "15/6/1998",
         "schoolName": "High School Name",
         "graduationYear": "2021",
         "sports": "Football",
         "position": "Striker",
         "interests": "Fitness, Sports",
         "logo":logo
-      }
+      },
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "homeTown": "New York",
+        "dob": "15/6/1998",
+        "schoolName": "High School Name",
+        "graduationYear": "2021",
+        "sports": "Football",
+        "position": "Striker",
+        "interests": "Fitness, Sports",
+        "logo":logo
+      },
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "homeTown": "New York",
+        "dob": "15/6/1998",
+        "schoolName": "High School Name",
+        "graduationYear": "2021",
+        "sports": "Football",
+        "position": "Striker",
+        "interests": "Fitness, Sports",
+        "logo":logo
+      },
+
      
 ];
