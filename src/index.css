@@ -12,7 +12,7 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
-     overflow: hidden;
+     overflow-x: hidden;
   }
   .smooch-sans {
     font-family: "Smooch Sans", sans-serif;
