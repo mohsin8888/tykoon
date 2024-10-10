@@ -50,7 +50,7 @@ export const Users = () => {
       <div className="bg-white rounded-lg">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 p-6">Users</h2>
         <div ref={tableRef}>
-          <div className="h-[440px] sm:h-[435px] overflow-y-auto overflow-x-auto"> {/* Set height and enable vertical scroll */}
+          <div className="h-[440px] sm:h-[435px]  overflow-x-auto"> {/* Set height and enable vertical scroll */}
             <table className="min-w-full bg-white rounded-lg">
               <thead>
                 <tr className="bg-slate-200 text-left text-sm font-semibold text-[#828282] border-b border-gray-200">
@@ -91,7 +91,7 @@ export const Users = () => {
                     <td className="px-4 py-2">{user.sports}</td>
                     <td className="px-4 py-2">{user.position}</td>
                     <td className="px-4 py-2">{user.interests}</td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 py-2"  onMouseLeave={() => setClickedRowIndex(null)}>
                       <button
                         className="text-gray-600 focus:outline-none"
                         onClick={() => handleMenuClick(index, user.rowRef)}
@@ -103,7 +103,7 @@ export const Users = () => {
                         <div
                           className={`absolute ${
                             dropdownPosition === "below" ? "mt-2" : "-mt-32"
-                          } right-0 w-[6rem] bg-white border rounded-md shadow-lg z-10`}
+                          } right-12 w-[6rem] bg-white border rounded-md shadow-lg z-10`}
                           onMouseLeave={() => setClickedRowIndex(null)}
                         >
                           <div className="py-1">
