@@ -19,35 +19,37 @@ export const Dashboard = () => {
         <Usercard Heading="Accepted Partnerships" Text="30" Icon={Accepticon} />
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Users Partnerships this user</h2>
-        <div className="overflow-y-auto overflow-x-auto">
-          <table className="min-w-full bg-white">
+      <div className="bg-white  rounded-lg shadow-sm p-6">
+        <div className=" text-2xl font-semibold text-gray-800 mb-4">
+        <h2>Users Partnerships this user</h2>
+        </div>
+        <div className="overflow-y-auto overflow-x-auto ">
+          <table className="min-w-[98%] mx-auto bg-white p-12">
             <thead>
-              <tr className="w-full text-[#828282] border-b border-gray-200 py-4">
-                <th className="px-4 py-4 text-left">Company logo</th>
-                <th className="px-4 py-2 text-left">Partnership Title</th>
-                <th className="px-4 py-2 text-left">User Name</th>
-                <th className="px-4 py-2 text-left">Phone Number</th>
-                <th className="px-4 py-2 text-left">Status</th>
-                <th className="px-4 py-2"></th>
+              <tr className="w-full text-[#828282] border-b  border-gray-200  ">
+                <th className="px-4 py-4 border-r-2 text-center ">Company logo</th>
+                <th className="px-4 py-2  border-r-2  text-center">Partnership Title</th>
+                <th className="px-4 py-2  border-r-2 text-center">User Name</th>
+                <th className="px-4 py-2  border-r-2 text-center">Phone Number</th>
+                <th className="px-4 py-2  border-r-2 text-center">Status</th>
+                <th className="px-4 py-2"> Action</th>
               </tr>
             </thead>
             <tbody>
               {partnershipitem.map((item, index) => (
                 <tr
                   key={index}
-                  className={`px-4 py-2 ${index !== partnershipitem.length - 1 ? 'border-b border-gray-200' : ''}`}
+                  className={`${index !== partnershipitem.length - 1 ? 'border-b border-gray-' : ' '}`}
                 >
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-4 border-r-2 text-center">
                     <img src={item.companyLogo} alt="Logo" className="w-10 h-10 rounded-full" />
                   </td>
-                  <td className="px-4 py-2">{item.partnershipTitle}</td>
-                  <td className="px-4 py-2">{item.userName}</td>
-                  <td className="px-4 py-2">{item.phoneNumber}</td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 border-r-2 text-center">{item.partnershipTitle}</td>
+                  <td className="px-4 py-2 border-r-2 text-center">{item.userName}</td>
+                  <td className="px-4 py-2 border-r-2 text-center">{item.phoneNumber}</td>
+                  <td className="px-4 py- border-r-2 text-center">
                     <span
-                      className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                      className={`px-3 py-2 text-xs font-semibold rounded-full ${
                         item.status
                           ? 'text-green-600 bg-green-100' // Status true, Completed
                           : 'text-red-600 bg-red-100'     // Status false, In Progress or Failed
@@ -56,7 +58,7 @@ export const Dashboard = () => {
                       {item.status ? 'Completed' : 'In Progress'}
                     </span>
                   </td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 text-center">
                     <button className="text-gray-600 focus:outline-none">
                       <FaEllipsisV />
                     </button>

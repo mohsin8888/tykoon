@@ -6,7 +6,7 @@ import ButtonLoading from "../components/Buttons/ButtonLoading";
 export const Partnership = () => {
   const [partnerships, setPartnerships] = useState(addpartnershipitem);
   const [showModal, setShowModal] = useState(false); // Modal visibility
-  const tableRef = useRef(null); // Reference for the scrollable container
+  // const tableRef = useRef(null); // Reference for the scrollable container
   const [deletingIndex, setDeletingIndex] = useState(null); // State for delete loading
 
   const [newPartnership, setNewPartnership] = useState({
@@ -48,7 +48,6 @@ export const Partnership = () => {
 
   return (
     <>
-   
       <div className="flex justify-end items-center mb-4">
         <button
           onClick={() => setShowModal(true)}
@@ -60,7 +59,10 @@ export const Partnership = () => {
 
       {/* Modal for adding a partnership */}
       {showModal && (
-        <div className="fixed inset-0 bg-gray-300 bg-opacity-50 flex justify-center mx-auto md:ml-40 items-center" onClick={() => setShowModal(false)}>
+        <div
+          className="fixed inset-0 bg-gray-300 bg-opacity-50 flex justify-center mx-auto md:ml-40 items-center"
+          onClick={() => setShowModal(false)}
+        >
           <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] sm:w-[70%] h-[80%] sm:h-[70%] overflow-y-auto">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
               Add Partnership
@@ -137,17 +139,17 @@ export const Partnership = () => {
         </div>
       )}
 
-      <div className="bg-white rounded-lg">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4 p-6">
+      <div className="bg-white rounded-md">
+        <h2 className="text-[1.5rem] font-semibold text-gray-800 mb-4 p-6">
           Partnership
         </h2>
         <div
-          ref={tableRef}
+          // ref={tableRef}
           className="overflow-x-auto"
         >
-          <table className="min-w-full bg-white rounded-lg shadow-lg">
+          <table className="min-w-[99%] mx-auto bg-white rounded-lg shadow-lg">
             <thead>
-              <tr className="bg-slate-200 text-[#828282] text-lg border-b border-gray-200">
+              <tr className="bg-slate-200 text-[#828282] text-[1.3rem] border-b border-gray-200">
                 <th className="px-2 py-4">Company logo</th>
                 <th className="px-4 py-2">Title</th>
                 <th className="px-4 py-2 text-gray-600 whitespace-normal">
@@ -160,59 +162,72 @@ export const Partnership = () => {
               </tr>
             </thead>
             <tbody>
-  {partnerships.map((partnership, index) => (
-    <tr
-      key={index}
-      className={`px-4 py-2 ${
-        index !== partnerships.length - 1 ? "border-b border-gray-200" : ""
-      }`}
-    >
-      <td className="px-4 py-2">
-        {typeof partnership.companyLogo === "string" ? (
-          <img
-            src={partnership.companyLogo}
-            alt="Logo"
-            className="w-16 h-16 rounded-full"
-          />
-        ) : partnership.companyLogo instanceof File ? (
-          <img
-            src={URL.createObjectURL(partnership.companyLogo)}
-            alt="Uploaded Logo"
-            className="w-10 h-10 rounded-full"
-          />
-        ) : (
-          <img
-            src="/default-logo.png"
-            alt="Default Logo"
-            className="w-10 h-10 rounded-full"
-          />
-        )}
-      </td>
+              {partnerships.map((partnership, index) => (
+                <tr
+                  key={index}
+                  className={` ${
+                    index !== partnerships.length - 1
+                      ? "border-b border-gray-200"
+                      : ""
+                  }`}
+                >
+                  <td className="px-4 py-2">
+                    {typeof partnership.companyLogo === "string" ? (
+                      <img
+                        src={partnership.companyLogo}
+                        alt="Logo"
+                        className="w-16 h-16 rounded-full"
+                      />
+                    ) : partnership.companyLogo instanceof File ? (
+                      <img
+                        src={URL.createObjectURL(partnership.companyLogo)}
+                        alt="Uploaded Logo"
+                        className="w-10 h-10 rounded-full"
+                      />
+                    ) : (
+                      <img
+                        src="/default-logo.png"
+                        alt="Default Logo"
+                        className="w-10 h-10 rounded-full"
+                      />
+                    )}
+                  </td>
 
-      <td className="px-4 py-2 text-center">{partnership.title}</td>
-      <td className="px-4 py-2 text-center">{partnership.companyName}</td>
-      <td className="px-4 py-2 text-center">{partnership.deliverables}</td>
-      <td className="px-4 py-2 text-center">{partnership.platform}</td>
-      <td className="px-4 py-2 text-center">{partnership.amount}</td>
-      <td className="px-4 py- ">
-  {deletingIndex === index ? (
-    <div className="flex justify-end items-center w-[8rem]"> {/* Fixed width for the loader */}
-      <ButtonLoading customClasses="!bg-green-900 !py-2 !px-2" />
-    </div>
-  ) : (
-    <div className="flex  justify-end items-center w-[8rem]"> {/* Same fixed width for the button */}
-      <Button
-        value="Delete"
-        onClick={() => handleDeletePartnership(index)}
-        customClass="!bg-red-500 !py-2 !px-2 w-full"
-      />
-    </div>
-  )}
-</td>
-    </tr>
-  ))}
-</tbody>
-
+                  <td className="px-4 py-2 text-center">{partnership.title}</td>
+                  <td className="px-4 py-2 text-center">
+                    {partnership.companyName}
+                  </td>
+                  <td className="px-4 py-2 text-center">
+                    {partnership.deliverables}
+                  </td>
+                  <td className="px-4 py-2 text-center">
+                    {partnership.platform}
+                  </td>
+                  <td className="px-4 py-2 text-center">
+                    {partnership.amount}
+                  </td>
+                  <td className="px-4 py-2">
+                    {deletingIndex === index ? (
+                      <div className="flex justify-end items-center w-[8rem]">
+                       
+                        {/* Fixed width for the loader */}
+                        <ButtonLoading customClasses="!bg-green-900 !py-2 !px-2" />
+                      </div>
+                    ) : (
+                      <div className="flex  justify-end items-center w-[8rem]">
+                        {" "}
+                        {/* Same fixed width for the button */}
+                        <Button
+                          value="Delete"
+                          onClick={() => handleDeletePartnership(index)}
+                          customClass="!bg-red-500 !py-2 !px-2 w-full"
+                        />
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
       </div>

@@ -101,11 +101,11 @@ export const SocialMedia = () => {
                 key={index}
                 className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-sm"
               >
-                <div className="flex items-center">
+                <div className="flex gap-3 items-center">
                   <img
                     src={platform.icon}
                     alt={platform.name}
-                    className="w-8 h-8 mr-3"
+                    className="w-8 h-8 "
                   />
                   <span className="text-lg font-medium">{platform.name}</span>
                 </div>
