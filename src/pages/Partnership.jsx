@@ -61,7 +61,7 @@ export const Partnership = () => {
       {showModal && (
         <div
           className="fixed inset-0 bg-gray-300 bg-opacity-50 flex justify-center mx-auto md:ml-40 items-center"
-          onClick={() => setShowModal(false)}
+         
         >
           <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] sm:w-[70%] h-[80%] sm:h-[70%] overflow-y-auto">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
