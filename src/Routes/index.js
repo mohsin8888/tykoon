@@ -9,13 +9,48 @@ import { Users } from "../pages/Users";
 import { TermConditions } from "../pages/TermConditions";
 import { AdminSetting } from "../pages/AdminSetting";
 import  Faq  from "../pages/Faq";
-
+import { Login } from "../pages/Login";
+import { PrivateRoute } from "./PrivateRoute";
+import { RedirectRoute } from "./RedirectRoute";
+import VerifyOtp from "../pages/VerifyOtp";
+import ChangePassword from "../pages/ChangePassword";
+import ResetPassword from "../pages/ResetPassword";
 
 // Using createBrowserRouter for path-based routing
 const Router = createBrowserRouter([
+
+  {
+    
+    path: "/verify",
+    element: <VerifyOtp/>,
+  },
+  {
+    
+    path: "/newpassword",
+    element: <ChangePassword/>,
+  },
+  {
+    
+    path: "/reset",
+    element: <ResetPassword />,
+  },
+  {
+    path: "/login",
+    element: (
+      <RedirectRoute>
+        <Login />
+      </RedirectRoute>
+    ),
+  },
+
+
   {
     path: "/",
-    element: <DashboardLayout />, // Main layout
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
     
      

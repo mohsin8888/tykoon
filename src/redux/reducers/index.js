@@ -1,19 +1,10 @@
 import { combineReducers } from "redux";
-// admin reducers
-import authReducer_admin from "./admin/authReducer_admin";
+import {userReducer} from "./userReducer";
+import { LoginReducer } from "./LoginReducer";
 
-// import other reducers here if any
-
-const appReducer = combineReducers({
-  // admin
-  authReducer_admin,
-});
-
-const rootReducer = (state, action) => {
-  if (action.type === "LOGOUT") {
-    state = undefined;
-  }
-  return appReducer(state, action);
-};
+const rootReducer = combineReducers({
+    user:userReducer,
+    login:LoginReducer
+})
 
 export default rootReducer;
