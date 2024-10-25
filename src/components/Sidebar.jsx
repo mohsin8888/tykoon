@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { navItems } from "../data/navData";
 import { FaBars, FaTimes } from "react-icons/fa"; // Importing icons for toggling
 import logo from "../assets/images/logo.svg";
+import { IoLogOutOutline } from "react-icons/io5";
 export const Sidebar = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleLogout = async (e) => {
+    localStorage.removeItem("accessToken");
+    navigate("/login");
+  };
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
@@ -45,11 +53,19 @@ export const Sidebar = () => {
                   }
                 >
                   {/* Add class to control the icon size */}
-                  <span className="text-xl text-gray-500">{item.icon}</span>
+                  <span className="text-xl text-black ">{item.icon}</span>
                   <span className="ml-3">{item.label}</span>
                 </NavLink>
               ))}
             </nav>
+            <Link to="/login">
+              <div className="px-4 py-4 flex items-center gap-4">
+                <IoLogOutOutline className="text-2xl text-black cursor-pointer" />
+                <div className="  text-red-600">
+                  <button onClick={handleLogout}>Log out</button>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

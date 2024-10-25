@@ -33,7 +33,9 @@ export const Login = () => {
     setLoading(true); // Set loading to true when submitting
     try {
       const response = await dispatch(loginUser(formData));
+      
       localStorage.setItem("accessToken", response.data.accessToken);
+     
       navigate("/");
      
      // toast("Login successful!");
@@ -57,116 +59,82 @@ export const Login = () => {
   return (
     <>
       <ToastContainer />
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="w-full max-w-lg p-8 space-y-8 bg-white rounded-lg shadow-md">
-          <div className="text-center">
-            <img src={headerlogo} alt="Logo" className="h-10 mx-auto" />
-          </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <input type="hidden" name="remember" value="true" />
-            <div className="space-y-4">
-              <div>
-                <label
-                  htmlFor="email-address"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Email address
-                </label>
-                <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Email address"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="relative">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  required
-                  className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Password"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-                <div className="absolute inset-y-0 right-0 top-7 flex items-center pr-3">
-                  <button
-                    type="button"
-                    onClick={toggleShowPassword}
-                    className="text-gray-600 focus:outline-none focus:text-gray-900"
-                  >
-                    {showPassword ? (
-                      <BiShow className="w-5 h-5" />
-                    ) : (
-                      <BiHide className="w-5 h-5" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember_me"
-                  name="remember_me"
-                  type="checkbox"
-                  className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                  checked={formData.remember_me}
-                  onChange={handleChange}
-                />
-                <label
-                  htmlFor="remember_me"
-                  className="block ml-2 text-sm text-gray-900"
-                >
-                  Remember me
-                </label>
-              </div>
-              <div className="text-sm">
-                <a
-                  href="/reset"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
-            <div>
-              {loading ? (
-                <ButtonLoading customClass=" bg-gray-500" />
-              ) : (
-                <button
-                  type="submit"
-                  className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  disabled={loading} // Disable button when loading
-                >
-                  Login
-                </button>
-              )}
-            </div>
-            <div className="text-center mt-4">
-              <a
-                href="/signup"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Create an Account 
-              </a>
-            </div>
-          </form>
-        </div>
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-purple-300 to-black text-white">
+  <div className="w-full max-w-lg p-6 bg-white rounded-2xl shadow-xl border border-gray-800">
+    <div className="text-center mb-6">
+      <img src={headerlogo} alt="Logo" className="h-12 mx-auto mb-4" />
+      <h2 className="text-[1.5rem] font-bold text-yellow-400">Welcome Back</h2>
+      <p className="text-sm text-gray-400">Sign in to access exclusive content</p>
+    </div>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <label htmlFor="email-address" className="block text-base font-semibold mb-1 text-gray-300">Email Address</label>
+        <input
+          id="email-address"
+          name="email"
+          type="email"
+          required
+          placeholder="Your Email"
+          className="block w-full px-4 py-2 text-gray-200 bg-gray-800 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          value={formData.email}
+          onChange={handleChange}
+        />
       </div>
+      <div className="relative">
+        <label htmlFor="password" className="block text-base font-semibold mb-1 text-gray-300">Password</label>
+        <input
+          id="password"
+          name="password"
+          type={showPassword ? "text" : "password"}
+          required
+          placeholder="Your Password"
+          className="block w-full px-4 py-2 text-gray-200 bg-gray-800 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <button type="button" onClick={toggleShowPassword} className="absolute inset-y-0 right-4 top-7 text-yellow-400">
+          {showPassword ? <BiShow /> : <BiHide />}
+        </button>
+      </div>
+      <div className="flex items-center justify-between">
+        <label className="flex items-center text-xs text-gray-400">
+          <input
+            type="checkbox"
+            name="remember_me"
+            checked={formData.remember_me}
+            onChange={handleChange}
+            className="bg-gray-800 rounded-full border-gray-600 focus:ring-yellow-400"
+          />
+          <span className="ml-2">Remember me</span>
+        </label>
+        <a href="/reset" className="text-xs font-medium text-yellow-400 hover:underline">Forgot password?</a>
+      </div>
+      <div>
+        {loading ? (
+          <ButtonLoading customClass="bg-gray-700" />
+        ) : (
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full px-4 py-2 text-base font-semibold text-white bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full shadow-md hover:from-yellow-500 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          >
+            Login
+          </button>
+        )}
+      </div>
+      <div className="text-center mt-4">
+        <a href="/signup" className="font-semibold text-yellow-400 hover:underline">Create an Account</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
     </>
   );
 };

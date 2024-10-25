@@ -4,7 +4,7 @@ const ButtonLoading = ({ customClasses }) => {
   return (
     <button
       type="button"
-      className={`cursor-not-allowed py-3 px-2 flex justify-center items-center  bg-slate-600  text-white w-[100%] transition ease-in duration-200 text-center text-base font-semibold shadow-md rounded-lg ${customClasses}`}
+      className={`cursor-not-allowed py-3 px-2 flex justify-center items-center  bg-slate-600  text-white w-[100%] rounded-full transition ease-in duration-200 text-center text-base font-semibold shadow-md  ${customClasses}`}
     >
       <svg
         width="20"

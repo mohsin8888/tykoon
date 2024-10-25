@@ -3,79 +3,87 @@ import Facebookicon from "../assets/images/Facebookicon.svg";
 import Instagram from "../assets/images/Instagram.svg";
 import { MdUploadFile } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export const SocialMedia = () => {
   const [showAddCard, setShowAddCard] = useState(false);
-  const [isEdit, setIsEdit] = useState(false); // Track whether we are editing
-  const [editIndex, setEditIndex] = useState(null); // Track index of the item being edited
+  const [isEdit, setIsEdit] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
   const [socialPlatforms, setSocialPlatforms] = useState([
     { name: "Facebook", icon: Facebookicon, iconName: "Facebookicon.svg" },
     { name: "Instagram", icon: Instagram, iconName: "Instagram.svg" },
   ]);
   const [newPlatform, setNewPlatform] = useState("");
   const [newIcon, setNewIcon] = useState(null);
-  const [uploadedFileName, setUploadedFileName] = useState(""); // New state to store file name
+  const [uploadedFileName, setUploadedFileName] = useState("");
 
-  // Handle the Add button click
   const handleAddClick = () => {
     setShowAddCard(true);
-    setIsEdit(false); // It's for adding, not editing
+    setIsEdit(false);
     setNewPlatform("");
     setNewIcon(null);
-    setUploadedFileName(""); // Reset file name on opening modal
+    setUploadedFileName("");
   };
 
-  // Handle saving new platform or editing existing one
   const handleSave = () => {
     if (newPlatform && newIcon) {
+      const isDuplicate = socialPlatforms.some(
+        (p) =>
+          p.name === newPlatform ||
+          p.iconName === uploadedFileName
+      );
+
+      if (isDuplicate) {
+        toast.error(
+          "Platform name or icon already exists. Please choose a different one."
+        );
+        return;
+      }
+
       if (isEdit) {
-        // Update the existing platform
         const updatedPlatforms = [...socialPlatforms];
-        updatedPlatforms[editIndex] = { name: newPlatform, icon: newIcon, iconName: uploadedFileName };
+        updatedPlatforms[editIndex] = {
+          name: newPlatform,
+          icon: newIcon,
+          iconName: uploadedFileName,
+        };
         setSocialPlatforms(updatedPlatforms);
-        setIsEdit(false); // Reset edit mode
-        setEditIndex(null); // Reset edit index
+        setIsEdit(false);
+        setEditIndex(null);
         toast.success("Platform updated successfully!");
       } else {
-        // Add new platform
         setSocialPlatforms([
           ...socialPlatforms,
           { name: newPlatform, icon: newIcon, iconName: uploadedFileName },
         ]);
-        toast.success("Platform added successfully!"); // Show toast notification
+        toast.success("Platform added successfully!");
       }
-      setShowAddCard(false); // Close modal
+      setShowAddCard(false);
     } else {
-      toast.error("Please enter platform name and icon."); // Error toast if fields are empty
+      toast.error("Please enter platform name and icon.");
     }
   };
 
-  // Handle Remove functionality
   const handleRemove = (index) => {
     const updatedPlatforms = socialPlatforms.filter((_, i) => i !== index);
     setSocialPlatforms(updatedPlatforms);
     toast.info("Platform removed successfully.");
   };
 
-  // Handle Edit button click
   const handleEdit = (index) => {
     setShowAddCard(true);
     setIsEdit(true);
-    setEditIndex(index); // Store the index of the platform being edited
-    setNewPlatform(socialPlatforms[index].name); // Set current name in input field
-    setNewIcon(socialPlatforms[index].icon); // Set current icon
-    setUploadedFileName(socialPlatforms[index].iconName); // Display previously uploaded file name
+    setEditIndex(index);
+    setNewPlatform(socialPlatforms[index].name);
+    setNewIcon(socialPlatforms[index].icon);
+    setUploadedFileName(socialPlatforms[index].iconName);
   };
 
-  // Handle file upload and store the file name
   const handleFileUpload = (e) => {
-   
     const file = e.target.files[0];
-    // console.log(file);
     if (file) {
-      setNewIcon(URL.createObjectURL(file)); // Set new icon
-      setUploadedFileName(file.name); // Store the file name
+      setNewIcon(URL.createObjectURL(file));
+      setUploadedFileName(file.name);
     }
   };
 
@@ -186,7 +194,6 @@ export const SocialMedia = () => {
         </div>
       )}
 
-      {/* Toast Container for notifications */}
       <ToastContainer />
     </>
   );

@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate} from "react-router-dom";
 
 export const RedirectRoute = ({ children }) => {
-  const { login } = useSelector((state) => state.login);
+   useSelector((state) => state.m);
   const Admintoken = localStorage.getItem("accessToken");
-  const location = useLocation();
+  
   if (Admintoken) {
     return <Navigate to="/login" />;
   }

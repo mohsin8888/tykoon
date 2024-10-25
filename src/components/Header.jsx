@@ -1,20 +1,9 @@
 import React, { useState } from "react";
 import { MdNotifications } from "react-icons/md";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { IoCartOutline, IoLogOutOutline } from "react-icons/io5";
+
 export const Header = () => {
-  const location = useLocation();
-
   const [isLogoutOpen, setIsLogoutOpen] = useState(false);
-  const navigate = useNavigate();
 
-  const toggleLogout = () => {
-    setIsLogoutOpen(!isLogoutOpen);
-  };
-  const handleLogout = async (e) => {
-    localStorage.removeItem("accessToken");
-    navigate("/login");
-  };
   return (
     <>
       <div className="w-[80%] sm:w-[100%] mx-auto">
@@ -40,18 +29,6 @@ export const Header = () => {
               </p>{" "}
               {/* Hidden on small screens */}
             </div>
-            
-            <IoLogOutOutline
-              className="h-12 w-12 cursor-pointer"
-              onClick={toggleLogout}
-            />
-            {isLogoutOpen && (
-              <div className="absolute right-0 top-10 bg-white shadow-lg rounded-md p-2">
-                <button className="text-black" onClick={handleLogout}>
-                  Log out
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
