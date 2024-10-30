@@ -3,7 +3,7 @@ const initialValue = {
 }
 
 const userReducer = (state=initialValue,{type,payload}) =>{
-    console.log(type);
+   // console.log(type);
     switch(type){
         case 'userData':
              return{

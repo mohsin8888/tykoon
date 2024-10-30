@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { resetPassword } from '../Redux/Actions/FirstAction'; // Make sure you have this action
+import { resetPassword } from '../Redux/Actions/FirstAction'; // Ensure you have this action
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
@@ -12,17 +12,17 @@ const ResetPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+    
     try {
-      
-     
       const response = await dispatch(resetPassword(email));
-       //console.log(response)
+      if (response && response.data) {
         localStorage.setItem("encryptOpts", response.data.otp);
         localStorage.setItem("email", response.data.email);
-       // console.log("Stored OTP:", response.data.email);
-      navigate("/verify");
-      toast.success('Password reset link sent to your email');
+        navigate("/verify");
+        toast.success('Password reset link sent to your email');
+      } else {
+        throw new Error("Unexpected response structure");
+      }
     } catch (error) {
       toast.error('Error sending password reset link');
       console.error('Error resetting password:', error);
