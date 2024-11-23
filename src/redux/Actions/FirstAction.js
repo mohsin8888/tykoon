@@ -136,7 +136,6 @@ export const fetchSocialMedia = () => async (dispatch) => {
   }
 };
 export const uploadFile = (file) => async (dispatch) => {
-  console.log("dd",file)
   try {
     const formData = new FormData();
     formData.append("file", file);
@@ -147,26 +146,41 @@ export const uploadFile = (file) => async (dispatch) => {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" },
     });
 
-    // Dispatch success action and return file path
     dispatch({ type: "UPLOAD_FILE_SUCCESS", payload: response.data });
-    return response.data.filePath; // Assume `filePath` is the path returned by the upload API
+
+    // Check the actual structure of response.data to confirm it contains filePath
+    return response.data; // Make sure this contains filePath
   } catch (error) {
     console.error("Error uploading file:", error.response ? error.response.data : error);
     dispatch({ type: "UPLOAD_FILE_FAILURE", error });
-    throw error; // Ensure error handling in `handleSave`
+    throw error;
   }
 };
 
 
 
+
 export const addSocialMedia = (platformData) => async (dispatch) => {
-  console.log("MOHSIN",platformData)
+  console.log("Platform Dataddd:", platformData);
+
   try {
     const token = localStorage.getItem("accessToken");
 
-    const response = await axios.post("http://localhost:5000/api/v1/social", platformData, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    // Create FormData to handle file upload
+    const formData = new FormData();
+    formData.append("iconFile", platformData.iconFile);
+    formData.append("socialmedianame", platformData.socialmedianame);
+
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/social",
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
 
     dispatch({ type: "ADD_SOCIAL_MEDIA", payload: response.data });
   } catch (error) {
@@ -174,6 +188,8 @@ export const addSocialMedia = (platformData) => async (dispatch) => {
     dispatch({ type: "ADD_SOCIAL_MEDIA_FAILURE", error });
   }
 };
+
+
 
 
 export const deleteSocialMedia = (id) => async (dispatch) => {

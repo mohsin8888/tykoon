@@ -17,6 +17,7 @@ export const SocialMedia = () => {
     dispatch(fetchSocialMedia());
   }, [dispatch]);
 
+  // Handle file selection
   const handleFileUpload = (e) => {
     if (e.target.files[0]) {
       setUploadedFileName(e.target.files[0].name);
@@ -24,34 +25,46 @@ export const SocialMedia = () => {
     }
   };
 
-  const handleSave = async () => {
-    if (newPlatform && file) {
-      try {
-        // First, upload the file and get its URL or path
-        const uploadedFileData = await dispatch(uploadFile(file));
-        
-        // Then, add the social media platform with the uploaded file's URL
-        await dispatch(addSocialMedia({ 
-          socialmedianame: newPlatform, 
-          iconFile: uploadedFileData.filePath // Assume `filePath` is returned by the upload API
-        }));
-        
-        // Reset fields and close the modal after successful addition
-        setShowAddCard(false);
-        setNewPlatform("");
-        setUploadedFileName("");
-        setFile(null);
-      } catch (error) {
-        console.error("Error in adding platform with file:", error);
-      }
-    } else {
-      alert("Please provide both platform name and file");
-    }
-  };
-  
+  // Handle save action with sequential API calls
+ // Handle save action with sequential API calls
+ const handleSave = async () => {
+  if (newPlatform && file) {
+    try {
+      // Upload file and check if file path is returned
+      const uploadedFileData = await dispatch(uploadFile(file));
+     // console.log("Uploaded file datacc:", uploadedFileData);
 
-  const platformsDataz =
-    socialPlatforms && socialPlatforms.data ? socialPlatforms.data : [];
+      if (!uploadedFileData || !uploadedFileData.data) {
+        throw new Error("File upload failed, no file path returned.");
+      }
+
+      // Add social media entry with correct file path
+      const response = await dispatch(addSocialMedia({ 
+        socialmedianame: newPlatform, 
+        iconFile: uploadedFileData.data
+      }));
+
+      if (!response || response.error) {
+        throw new Error(response.error || "Failed to add social media.");
+      }
+
+      // Reset form
+      setShowAddCard(false);
+      setNewPlatform("");
+      setUploadedFileName("");
+      setFile(null);
+    } catch (error) {
+      console.error("Error in adding platform:", error);
+      alert(error.message);
+    }
+  } else {
+    alert("Please provide both platform name and file");
+  }
+};
+
+
+
+  const platformsDataz = socialPlatforms && socialPlatforms.data ? socialPlatforms.data : [];
 
   return (
     <div className="w-full h-full bg-white">
@@ -78,7 +91,7 @@ export const SocialMedia = () => {
                 <div className="flex gap-3 items-center">
                   <img
                     src={`http://localhost:5000/${platform.iconFile}`}
-                    alt="no image"
+                    alt="Platform Icon"
                     className="w-8 h-8"
                   />
                   <span className="text-lg font-medium text-black">
@@ -87,9 +100,7 @@ export const SocialMedia = () => {
                 </div>
                 <div className="flex space-x-4">
                   <button
-                    onClick={() => {
-                      dispatch(deleteSocialMedia(platform._id));
-                    }}
+                    onClick={() => dispatch(deleteSocialMedia(platform._id))}
                     className="text-red-500 hover:underline"
                   >
                     Remove
@@ -123,10 +134,7 @@ export const SocialMedia = () => {
               Upload Icon
             </label>
             <div className="w-full h-24 border-2 border-dashed border-orange-500 bg-orange-50 flex items-center px-4 py-2 rounded-lg justify-between cursor-pointer mb-4">
-              <label
-                htmlFor="upload"
-                className="flex items-center cursor-pointer"
-              >
+              <label htmlFor="upload" className="flex items-center cursor-pointer">
                 <MdUploadFile className="text-orange-500 w-10 h-10 mr-4" />
                 <div>
                   <p className="text-orange-500 font-medium">
